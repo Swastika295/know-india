@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Know India</title>
+<style>
+:root{--bg:#e9dcc0;--card:#f7eed9;--ink:#3a2817;--mute:#7b6347;--line:#c8b08a;--soft:#efe2c6;--accent:#6b3d1a;--onaccent:#f7eed9;--gold:#a67c37;--head:"Cinzel","Trajan Pro",Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1b130c;--card:#261b12;--ink:#ecdcbc;--mute:#b39b76;--line:#5b4529;--soft:#2f2216;--accent:#d2a965;--onaccent:#1b130c;--gold:#c9a368}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1b130c;--card:#261b12;--ink:#ecdcbc;--mute:#b39b76;--line:#5b4529;--soft:#2f2216;--accent:#d2a965;--onaccent:#1b130c;--gold:#c9a368}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg) radial-gradient(ellipse at top,rgba(255,248,225,.35),transparent 60%);color:var(--ink);font:17px/1.55 "EB Garamond","Cormorant Garamond",Georgia,"Times New Roman",serif;-webkit-font-smoothing:antialiased}
+header{max-width:1120px;margin:auto;padding:48px 24px 20px;text-align:center}
+h1{margin:0;font-family:var(--head);font-size:clamp(28px,5vw,42px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+header p{margin:8px 0 0;color:var(--mute);font-style:italic;font-size:18px}
+header::after{content:"\2766";display:block;margin-top:14px;color:var(--gold);font-size:22px;background:linear-gradient(var(--line),var(--line)) left center/calc(50% - 28px) 1px no-repeat,linear-gradient(var(--line),var(--line)) right center/calc(50% - 28px) 1px no-repeat}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;max-width:1120px;margin:auto;padding:20px 24px 32px}
+@media(max-width:820px){.grid{grid-template-columns:1fr;padding:16px}header{padding:32px 16px 16px}}
+.box{background:var(--card);border:4px double var(--gold);border-radius:3px;padding:24px;display:flex;flex-direction:column;height:620px;min-width:0;box-shadow:0 2px 0 rgba(90,60,25,.15),inset 0 0 40px rgba(166,124,55,.12)}
+.box h2{margin:0;font-family:var(--head);font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-align:center}
+.box h2 small{display:block;font-family:"EB Garamond",Georgia,serif;font-size:14px;font-weight:400;font-style:italic;letter-spacing:.2em;color:var(--gold);margin-bottom:2px;text-transform:none}
+.sub{color:var(--mute);font-style:italic;text-align:center;margin:4px 0 14px;font-size:15px}
+.tabs{display:flex;gap:18px;margin-bottom:12px;flex-wrap:wrap;justify-content:center;border-bottom:1px solid var(--line)}
+button,select,input{font:inherit;color:inherit}
+.tab{border:0;background:none;padding:0 2px 6px;margin-bottom:-1px;cursor:pointer;color:var(--mute);font-variant:small-caps;letter-spacing:.08em;font-size:16px;border-bottom:2px solid transparent}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.chip{border:1px solid var(--line);background:var(--soft);border-radius:2px;padding:3px 10px;cursor:pointer;font-size:14px;font-style:italic;color:var(--mute)}
+.chip:hover{color:var(--accent);border-color:var(--gold)}
+#ac{border:0;gap:6px;margin-bottom:4px}
+input[type=text],select{width:100%;border:1px solid var(--line);background:var(--soft);border-radius:2px;padding:8px 12px;outline:0}
+input[type=text]:focus,select:focus{border-color:var(--accent)}
+.scroll{flex:1;overflow:auto;min-height:0;margin-top:12px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.item{padding:10px 0;border-bottom:1px dotted var(--line)}
+.item:last-child{border-bottom:0}
+.item b{display:block;font-family:var(--head);font-weight:500;font-size:13px;letter-spacing:.06em;color:var(--accent)}
+.item span{display:block}
+.btn{background:var(--accent);color:var(--onaccent);border:1px solid var(--gold);border-radius:2px;padding:8px 18px;cursor:pointer;font-variant:small-caps;letter-spacing:.08em;font-size:16px}
+.btn:hover{filter:brightness(1.12)}.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px}
+.facts{display:grid;grid-template-columns:96px 1fr;gap:6px 12px;margin:16px 0;padding:12px 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft)}
+.facts dt{color:var(--gold);font-variant:small-caps;letter-spacing:.08em;font-weight:600}.facts dd{margin:0}
+.ans{white-space:pre-wrap;margin-top:12px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;border:1px solid var(--line);background:var(--soft);border-radius:2px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.ok{border-color:#4d6b2f;background:rgba(77,107,47,.2)}.opt.bad{border-color:#913a2a;background:rgba(145,58,42,.2)}
+.msg{padding:10px 12px;border-radius:2px;margin:8px 0;white-space:pre-wrap}
+.me{background:var(--soft);margin-left:15%;border-right:3px solid var(--gold)}.ai{border:1px solid var(--line);margin-right:5%}
+.src{font-size:14px;font-style:italic;color:var(--mute);margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}
+.src a{color:var(--accent);text-underline-offset:2px}
+.note{font-size:14px;font-style:italic;color:var(--mute);padding:0 24px 40px;max-width:1120px;margin:auto;text-align:center}
+@media(max-width:820px){.note{padding:0 16px 32px}.box{padding:20px}}
+
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .1 0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(ellipse at top,rgba(255,248,225,.45),transparent 60%),radial-gradient(ellipse at bottom,rgba(90,55,20,.22),transparent 65%);background-attachment:fixed}
+.seal{width:84px;height:84px;display:block;margin:0 auto 12px;filter:drop-shadow(0 3px 4px rgba(60,35,10,.35))}
+h1{background:linear-gradient(180deg,var(--accent),#8a5a2b 60%,var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
+header p{font-size:19px}
+.box{position:relative;padding:30px 28px 24px;transition:transform .25s ease,box-shadow .25s ease;animation:rise .7s ease both}
+.box::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);pointer-events:none;border-radius:2px}
+.box:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(70,42,14,.25),inset 0 0 40px rgba(166,124,55,.14)}
+.grid .box:nth-child(2){animation-delay:.1s}.grid .box:nth-child(3){animation-delay:.2s}.grid .box:nth-child(4){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.box{animation:none;transition:none}.box:hover{transform:none}}
+.box h2{font-size:19px;margin-top:2px}
+.box h2 small{display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0 auto 8px;border-radius:50%;border:3px double var(--gold);background:var(--accent);color:var(--onaccent);font-family:var(--head);font-style:normal;font-size:14px;letter-spacing:0;font-weight:600;box-shadow:0 2px 5px rgba(60,35,10,.3)}
+.sub{margin-bottom:16px}
+.sub::after{content:"";display:block;width:70px;height:1px;margin:10px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.item{padding:10px 8px;border-radius:2px;transition:background .15s}
+.item:hover{background:var(--soft)}
+.btn{background:linear-gradient(180deg,#85502a,var(--accent));box-shadow:0 2px 0 rgba(0,0,0,.18)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{background:linear-gradient(180deg,#e0bb7c,var(--accent))}}
+:root[data-theme="dark"] .btn{background:linear-gradient(180deg,#e0bb7c,var(--accent))}
+.facts{border-left:3px solid var(--gold);border-radius:2px}
+.opt.ok::after{content:"  \2713";color:#4d6b2f;font-weight:700}.opt.bad::after{content:"  \2717";color:#913a2a;font-weight:700}
+.tab.on{background:linear-gradient(0deg,rgba(166,124,55,.16),transparent)}
+.note::before{content:"\2766";display:block;color:var(--gold);font-size:22px;margin-bottom:6px;font-style:normal}
+
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;max-width:1120px;margin:8px auto 0;padding:16px 24px 0}
+.card{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:26px 16px 22px;background:var(--card);border:4px double var(--gold);border-radius:3px;cursor:pointer;box-shadow:inset 0 0 30px rgba(166,124,55,.12);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.card::before{content:"";position:absolute;inset:5px;border:1px solid var(--line);pointer-events:none}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(70,42,14,.25),inset 0 0 30px rgba(166,124,55,.16)}
+.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.card .ic{font-size:38px;line-height:1;margin-bottom:6px;filter:drop-shadow(0 2px 2px rgba(60,35,10,.3))}
+.card b{font-family:var(--head);font-size:17px;font-weight:600;letter-spacing:.06em;color:var(--accent)}
+.card .d{font-size:15px;font-style:italic;color:var(--mute);line-height:1.35}
+.card[aria-pressed="true"]{background:var(--accent);box-shadow:0 8px 18px rgba(70,42,14,.3)}
+.card[aria-pressed="true"] b,.card[aria-pressed="true"] .d{color:var(--onaccent)}
+.card[aria-pressed="true"]::before{border-color:rgba(247,238,217,.4)}
+.hint{text-align:center;font-style:italic;color:var(--mute);margin:18px 0 0}
+.grid{grid-template-columns:minmax(0,1fr);max-width:920px;padding-top:20px}
+.box[hidden]{display:none}
+.box:hover{transform:none}
+@media(max-width:820px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px 16px 0}.card{padding:20px 10px 16px}.card .ic{font-size:32px}}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+
+.frieze{height:26px;background:linear-gradient(var(--accent),var(--accent)) 0 0/100% 7px no-repeat,radial-gradient(circle at 12px 16px,var(--gold) 3.5px,transparent 4px) 0 0/24px 26px repeat-x,linear-gradient(var(--line),var(--line)) 0 100%/100% 1px no-repeat}
+.seal{width:104px;height:104px;margin-bottom:14px}
+header{padding-top:36px}
+h1{font-size:clamp(32px,6vw,52px);letter-spacing:.16em}
+.stats{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;align-items:center;margin-top:18px;font-variant:small-caps;letter-spacing:.08em;color:var(--mute);font-size:16px}
+.stats b{font-family:var(--head);color:var(--accent);font-size:18px;font-variant:normal}
+.stats i{color:var(--gold);font-style:normal;font-size:9px}
+.cards{margin-top:14px;gap:22px}
+.card{overflow:hidden;padding:30px 18px 22px;background:linear-gradient(180deg,var(--card),var(--soft))}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 38%,rgba(255,240,200,.38) 50%,transparent 62%);transform:translateX(-130%);transition:transform .8s ease;pointer-events:none}
+.card:hover::after{transform:translateX(130%)}
+.card .ic{display:grid;place-items:center;width:72px;height:72px;font-size:34px;margin-bottom:8px;border:3px double var(--gold);border-radius:50%;background:radial-gradient(circle,var(--card) 45%,var(--soft));box-shadow:0 3px 8px rgba(60,35,10,.25)}
+.card[aria-pressed="true"]{background:linear-gradient(180deg,#80491f,var(--accent))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card[aria-pressed="true"]{background:linear-gradient(180deg,#e2bd7e,var(--accent))}}
+:root[data-theme="dark"] .card[aria-pressed="true"]{background:linear-gradient(180deg,#e2bd7e,var(--accent))}
+.rn{position:absolute;top:12px;left:16px;font-family:var(--head);font-style:normal;font-size:12px;letter-spacing:.1em;color:var(--gold)}
+.go{margin-top:10px;font-variant:small-caps;letter-spacing:.1em;font-size:16px;color:var(--gold);font-weight:600;transition:transform .2s}
+.card:hover .go{transform:translateX(5px)}
+.card[aria-pressed="true"] .go,.card[aria-pressed="true"] .rn{color:var(--onaccent)}
+.card{animation:rise .7s ease both}
+.cards .card:nth-child(2){animation-delay:.08s}.cards .card:nth-child(3){animation-delay:.16s}.cards .card:nth-child(4){animation-delay:.24s}
+.hint::before{content:"\2193";display:block;color:var(--gold);font-size:22px;font-style:normal;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.box h2::before,.box h2::after{content:none}
+@media (prefers-reduced-motion:reduce){.card,.hint::before{animation:none}.card::after{display:none}}
+@media(max-width:820px){.card .ic{width:60px;height:60px;font-size:28px}.stats{font-size:14px}}
+
+body{background-color:#3a0a16;background-image:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2784%27%20height=%2784%27%3E%3Cg%20fill=%27none%27%20stroke=%27%23d4af37%27%20stroke-opacity=%27.2%27%20stroke-width=%271%27%3E%3Cpath%20d=%27M42%206L78%2042%2042%2078%206%2042Z%27/%3E%3Cpath%20d=%27M42%2022L62%2042%2042%2062%2022%2042Z%27/%3E%3Ccircle%20cx=%2742%27%20cy=%2742%27%20r=%275%27/%3E%3C/g%3E%3Cg%20fill=%27%23d4af37%27%20fill-opacity=%27.18%27%3E%3Ccircle%20cx=%270%27%20cy=%270%27%20r=%273%27/%3E%3Ccircle%20cx=%2784%27%20cy=%270%27%20r=%273%27/%3E%3Ccircle%20cx=%270%27%20cy=%2784%27%20r=%273%27/%3E%3Ccircle%20cx=%2784%27%20cy=%2784%27%20r=%273%27/%3E%3Ccircle%20cx=%2742%27%20cy=%276%27%20r=%272%27/%3E%3Ccircle%20cx=%2742%27%20cy=%2778%27%20r=%272%27/%3E%3Ccircle%20cx=%276%27%20cy=%2742%27%20r=%272%27/%3E%3Ccircle%20cx=%2778%27%20cy=%2742%27%20r=%272%27/%3E%3C/g%3E%3C/svg%3E"),radial-gradient(ellipse 70% 45% at 50% 0%,rgba(230,190,80,.30),transparent 70%),radial-gradient(ellipse at 50% 100%,rgba(10,0,5,.65),transparent 65%),linear-gradient(180deg,#5e1226,#3d0b18 55%,#26050f);background-attachment:fixed;background-size:84px 84px,auto,auto,auto}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(0,0,0,.30) 0 16px,rgba(255,255,255,.05) 16px 30px,rgba(0,0,0,.18) 30px 48px);-webkit-mask-image:linear-gradient(90deg,#000 0,transparent 13%,transparent 87%,#000 100%);mask-image:linear-gradient(90deg,#000 0,transparent 13%,transparent 87%,#000 100%)}
+@media(max-width:820px){body::before{display:none}}
+.frieze{background-color:rgba(0,0,0,.28);background-image:linear-gradient(#e2c15a,#a67c37),radial-gradient(circle at 12px 16px,#d4af37 3.5px,transparent 4px),linear-gradient(rgba(212,175,55,.45),rgba(212,175,55,.45));background-size:100% 7px,24px 26px,100% 1px;background-position:0 0,0 0,0 100%;background-repeat:no-repeat,repeat-x,no-repeat}
+h1{background:linear-gradient(180deg,#fff2bf,#e6c35c 55%,#b8872b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 3px rgba(0,0,0,.55))}
+header p,.stats,.hint,.note{color:#ecd493}
+.stats b{color:#f6dc8a}.stats i,.hint::before,.note::before{color:#d4af37}
+header::after{background:linear-gradient(rgba(212,175,55,.6),rgba(212,175,55,.6)) left center/calc(50% - 28px) 1px no-repeat,linear-gradient(rgba(212,175,55,.6),rgba(212,175,55,.6)) right center/calc(50% - 28px) 1px no-repeat;color:#d4af37}
+.seal{filter:drop-shadow(0 0 14px rgba(230,190,80,.45)) drop-shadow(0 3px 4px rgba(0,0,0,.5))}
+.seal circle:first-child{fill:#d4af37!important}
+.seal circle:not(:first-child){stroke:#4a0e1c!important}
+.seal circle:last-child{fill:#4a0e1c!important;stroke:none!important}
+.card,.box{box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 1px rgba(212,175,55,.25),inset 0 0 40px rgba(166,124,55,.14)}
+.card:hover{box-shadow:0 14px 30px rgba(0,0,0,.6),0 0 22px rgba(230,190,80,.35),inset 0 0 30px rgba(166,124,55,.18)}
+.box:hover{box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 1px rgba(212,175,55,.25),inset 0 0 40px rgba(166,124,55,.14)}
+
+.item{padding:0}
+.ih{display:flex;width:100%;justify-content:space-between;gap:10px;align-items:flex-start;text-align:left;background:none;border:0;padding:10px 8px;cursor:pointer}
+.ht{flex:1}
+.chev{color:var(--gold);font-style:normal;margin-top:2px;transition:transform .2s}
+.item.open{background:var(--soft);border-left:3px solid var(--gold)}
+.item.open .chev{transform:rotate(90deg)}
+.more{padding:0 12px 12px 8px}.more p{margin:0 0 8px}
+.act{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.act a{color:var(--accent);font-size:15px;text-underline-offset:2px}
+.act .chip:disabled{opacity:.5}
+
+.fb{margin-top:12px;padding:10px 12px;border-left:3px solid var(--gold);border-radius:2px;background:var(--soft)}
+.fb.good{border-left-color:#4d6b2f}.fb.wrong{border-left-color:#913a2a}
+.qcat{font-variant:small-caps;letter-spacing:.1em;color:var(--gold);margin:0 0 6px;font-weight:600}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"></head><body>
+<div class="frieze" aria-hidden="true"></div>
+<header><svg class="seal" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" style="fill:var(--accent)"/><circle cx="50" cy="50" r="43" fill="none" style="stroke:var(--card)" stroke-width="1.5"/><circle cx="50" cy="50" r="38" fill="none" style="stroke:var(--card)" stroke-width="3"/><circle cx="50" cy="50" r="24" fill="none" style="stroke:var(--card)" stroke-width="20" stroke-dasharray="1.3 4.98" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="13" fill="none" style="stroke:var(--card)" stroke-width="2"/><circle cx="50" cy="50" r="5" style="fill:var(--card)"/></svg><h1>Know India</h1><p>An almanac of the Constitution, the States, Governance and World Affairs</p><div class="stats"><span><b>28</b> States</span><i>&#9670;</i><span><b>27</b> Articles</span><i>&#9670;</i><span><b>16</b> Amendments</span><i>&#9670;</i><span><b>12</b> Quiz questions</span></div></header>
+<nav class="cards" aria-label="Sections">
+<button class="card" data-t="0" aria-pressed="false"><i class="rn">I</i><span class="ic">&#9878;&#65039;</span><b>Constitution</b><span class="d">Preamble, articles and amendments</span><span class="go">Explore &rarr;</span></button>
+<button class="card" data-t="1" aria-pressed="false"><i class="rn">II</i><span class="ic">&#128506;&#65039;</span><b>States</b><span class="d">Capitals, area, languages and culture</span><span class="go">Explore &rarr;</span></button>
+<button class="card" data-t="2" aria-pressed="false"><i class="rn">III</i><span class="ic">&#127963;&#65039;</span><b>Governance</b><span class="d">Parliament, judiciary, executive, elections</span><span class="go">Explore &rarr;</span></button>
+<button class="card" data-t="3" aria-pressed="false"><i class="rn">IV</i><span class="ic">&#127757;</span><b>World Affairs</b><span class="d">International relations and policy, answered by AI</span><span class="go">Explore &rarr;</span></button>
+</nav>
+<p class="hint" id="hint">Select a card to begin</p>
+<main class="grid">
+
+<section class="box" id="p0" hidden><h2><small>I</small>Constitution</h2>
+<p class="sub">Tap any article or amendment to read more</p>
+<div class="tabs"><button class="tab on" id="ta">Articles</button><button class="tab" id="tm">Amendments</button></div>
+<input type="text" id="cs" placeholder="Search e.g. 21, emergency, GST">
+<div class="scroll" id="cl"></div>
+<div class="src">Source: <a href="https://en.wikipedia.org/wiki/Constitution_of_India" target="_blank" rel="noopener">Wikipedia: Constitution of India</a> · <a href="https://en.wikipedia.org/wiki/List_of_amendments_of_the_Constitution_of_India" target="_blank" rel="noopener">Amendments</a></div>
+</section>
+
+<section class="box" id="p1" hidden><h2><small>II</small>States of India</h2>
+<p class="sub">Pick a state, then ask about its culture, area, capital and more</p>
+<div class="row"><select id="ss"></select></div>
+<dl class="facts" id="sf"></dl>
+<div class="row"><input type="text" id="sq" placeholder="e.g. What is the culture of Kerala?"><button class="btn" id="sb">Ask</button></div>
+<div class="scroll ans" id="sa"></div>
+<div class="src" id="sw"></div>
+</section>
+
+<section class="box" id="p2" hidden><h2><small>III</small>Governance quiz</h2>
+<p class="sub">Questions keep coming. Tap Next to keep learning</p>
+<div class="tabs" id="qt"></div>
+<div class="scroll" id="qz"></div>
+</section>
+
+<section class="box" id="p3" hidden><h2><small>IV</small>Ask AI: world affairs</h2>
+<p class="sub">International relations and policy, answered in a neutral encyclopedic style</p>
+<div class="tabs" id="ac"></div>
+<div class="scroll" id="am"></div>
+<div class="row" style="margin-top:8px"><input type="text" id="ai" placeholder="Ask about treaties, bilateral ties, trade policy..."><button class="btn" id="ab">Send</button></div>
+</section>
+</main>
+<p class="note">Reference data on this page is a built-in snapshot based on Wikipedia, because published pages cannot fetch from other sites live. Answers in boxes 2 and 4 are generated by Claude and may be incomplete, so check the linked Wikipedia pages for the latest text.</p>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let sample=null;
+try{claude.use("sample").then(s=>{sample=s}).catch(()=>{})}catch(e){}
+
+/* ---------- Box 1 ---------- */
+const ART=[
+["Preamble","Declares India a sovereign, socialist, secular, democratic republic (socialist and secular were added in 1976).","Opens with 'We, the people of India' and names the aims of justice, liberty, equality and fraternity. It was adopted on 26 November 1949. The 42nd Amendment (1976) inserted 'socialist', 'secular' and 'integrity'."],
+["Article 1","India, that is Bharat, is a Union of States.","Gives the country two names and defines its territory as the States, the Union Territories and any territory acquired. Articles 2 and 3 let Parliament admit new states or reshape existing ones."],
+["Article 14","Equality before law and equal protection of the laws.","Applies to all persons, not only citizens. Courts allow reasonable classification, and have used the article to strike down arbitrary state action (E.P. Royappa, 1974)."],
+["Article 15","Prohibits discrimination on grounds of religion, race, caste, sex or place of birth.","Allows special provisions for women, children, socially and educationally backward classes, SCs and STs, and since 2019 for economically weaker sections."],
+["Article 17","Abolishes untouchability.","Its practice in any form is forbidden and is an offence. It is enforced through the Protection of Civil Rights Act, 1955 and the SC/ST (Prevention of Atrocities) Act, 1989."],
+["Article 19","Six freedoms, including speech and expression, assembly, association and movement.","Also covers residence and practising a profession. Each freedom is subject to reasonable restrictions listed in the article, such as public order and the sovereignty of India."],
+["Article 21","Protection of life and personal liberty.","Interpreted very broadly. Maneka Gandhi (1978) required that procedure be fair, just and reasonable, and the right now covers privacy (Puttaswamy, 2017), livelihood and a clean environment."],
+["Article 21A","Free and compulsory education for children aged 6 to 14.","Inserted by the 86th Amendment (2002) and made effective through the Right of Children to Free and Compulsory Education Act, 2009."],
+["Articles 25-28","Freedom of religion.","Article 25 protects freedom of conscience and the right to profess, practise and propagate religion. Article 26 covers managing religious affairs, 27 bars taxes for a particular religion, and 28 limits religious instruction in state-funded schools."],
+["Article 32","Right to move the Supreme Court for enforcement of Fundamental Rights.","Dr B.R. Ambedkar called it the heart and soul of the Constitution. The Court can issue the writs of habeas corpus, mandamus, prohibition, certiorari and quo warranto."],
+["Article 44","Directive Principle on a uniform civil code.","Directive Principles are not enforceable by courts. Goa has had a common civil code since Portuguese times, and Uttarakhand enacted a Uniform Civil Code law in 2024."],
+["Article 51A","Fundamental Duties of citizens (added by the 42nd Amendment).","Added on the recommendation of the Swaran Singh Committee, with 10 duties at first. An 11th, on providing education to children aged 6 to 14, was added in 2002."],
+["Article 52","There shall be a President of India.","Executive power is vested in the President (Article 53). The President is elected indirectly by an electoral college of elected members of Parliament and the state legislatures (Article 54)."],
+["Article 74","Council of Ministers headed by the Prime Minister to aid and advise the President.","After the 42nd and 44th Amendments the President must act on this advice, though the President may ask the Council to reconsider it once."],
+["Articles 79-80-81","Parliament, its Rajya Sabha and Lok Sabha.","Parliament consists of the President and the two Houses. The Rajya Sabha has up to 250 members (238 representing states and UTs, 12 nominated). The Lok Sabha is limited to 550 members and currently has 543 seats."],
+["Article 123","President's power to promulgate ordinances when Parliament is not in session.","An ordinance has the force of an Act, but must be laid before Parliament and lapses six weeks after it reassembles unless approved."],
+["Article 124","Establishment and composition of the Supreme Court.","The Court consists of the Chief Justice and other judges, with a sanctioned strength of 34 since 2019. Judges retire at the age of 65."],
+["Article 153","Governor of a state.","Each state has a Governor, appointed by the President, who holds office during the President's pleasure, normally for five years."],
+["Article 226","Power of High Courts to issue writs.","Wider than Article 32, because High Courts can issue writs for enforcing Fundamental Rights and for any other purpose."],
+["Article 280","Finance Commission.","Constituted by the President every five years to recommend how tax revenue is shared between the Centre and the states."],
+["Article 300A","Right to property as a constitutional right (since the 44th Amendment).","Originally a Fundamental Right (Article 31). Since 1978, deprivation of property needs authority of law, but it is no longer a Fundamental Right."],
+["Article 324","Election Commission of India superintends and conducts elections.","Headed by the Chief Election Commissioner with other Election Commissioners. It conducts elections to Parliament, state legislatures and the offices of President and Vice-President."],
+["Article 352","National Emergency.","Can be declared on grounds of war, external aggression or armed rebellion (the 44th Amendment replaced 'internal disturbance'). It has been declared in 1962, 1971 and 1975."],
+["Article 356","President's Rule in a state.","Used when the constitutional machinery in a state fails. S.R. Bommai v. Union of India (1994) made such a proclamation subject to judicial review."],
+["Article 360","Financial Emergency.","Can be proclaimed if the financial stability or credit of India is threatened. It has never been proclaimed."],
+["Article 368","Parliament's power to amend the Constitution and the procedure for it.","Some amendments need a simple majority, others a special majority, and some also need ratification by at least half of the states. Kesavananda Bharati (1973) held that the basic structure cannot be amended."],
+["Article 370","Special status of Jammu and Kashmir, abrogated in 2019.","Gave the state special autonomy. Its provisions were removed by a Presidential Order in August 2019, and the Supreme Court upheld this in December 2023."]
+];
+const AMD=[
+["1st (1951)","Added restrictions on freedom of speech and created the Ninth Schedule.","Passed under Nehru after courts struck down some laws. It added new grounds for restricting speech such as public order, added Article 15(4) for backward classes, and inserted Articles 31A and 31B."],
+["7th (1956)","Reorganised states on linguistic lines.","Implemented the States Reorganisation Act, 1956. It abolished the old Part A, B and C state classes and created 14 states and 6 Union Territories."],
+["24th (1971)","Affirmed Parliament's power to amend Fundamental Rights.","Passed after the Golaknath case (1967). Its scope was later limited by Kesavananda Bharati (1973), which set out the basic structure doctrine."],
+["42nd (1976)","Large-scale changes; added socialist, secular and integrity to the Preamble and Fundamental Duties.","Passed during the Emergency under Indira Gandhi and often called a mini-Constitution. Many of its changes were reversed by the 43rd and 44th Amendments."],
+["44th (1978)","Removed property from Fundamental Rights and added safeguards against misuse of Emergency.","Passed under the Janata government. It replaced 'internal disturbance' with 'armed rebellion' as a ground for Emergency and restored the Lok Sabha's term to five years."],
+["52nd (1985)","Anti-defection law (Tenth Schedule).","Disqualifies legislators who defect from their party, with the presiding officer deciding. The 91st Amendment (2003) later removed the exemption for party splits."],
+["61st (1989)","Lowered the voting age from 21 to 18.","Passed in 1988 under Rajiv Gandhi and brought into force in 1989, in time for that year's general election."],
+["73rd (1992)","Constitutional status for Panchayati Raj.","Added Part IX, creating a three-tier panchayat system with Gram Sabhas and reserving one-third of seats for women. In force from 1993."],
+["74th (1992)","Constitutional status for urban local bodies (municipalities).","Added Part IXA and the Twelfth Schedule, which lists the functions of municipalities. In force from 1993."],
+["86th (2002)","Right to education as Article 21A.","Also revised Article 45 on early childhood care and added the Fundamental Duty in Article 51A(k) for parents to provide education."],
+["91st (2003)","Capped the size of Councils of Ministers and tightened anti-defection rules.","Limits the Council of Ministers to 15% of the strength of the House, and removed the one-third split exemption from the anti-defection law."],
+["101st (2016)","Introduced the Goods and Services Tax (GST).","Created the GST Council (Article 279A) and replaced many central and state indirect taxes. GST was launched on 1 July 2017."],
+["102nd (2018)","Constitutional status for the National Commission for Backward Classes.","Added Article 338B. The 105th Amendment (2021) later restored the power of states to list backward classes."],
+["103rd (2019)","Up to 10% reservation for economically weaker sections.","Added Articles 15(6) and 16(6). The Supreme Court upheld it in Janhit Abhiyan v. Union of India (November 2022) by a 3 to 2 majority."],
+["104th (2020)","Ended Anglo-Indian nominated seats and extended SC/ST seat reservation.","Reserved seats for Scheduled Castes and Scheduled Tribes were extended by ten years, to 2030."],
+["106th (2023)","One-third reservation for women in Lok Sabha and state assemblies.","Also called the Nari Shakti Vandan Adhiniyam. It takes effect after the next census and delimitation exercise."]
+];
+let cm="a";const open=new Set();
+const wurl=r=>{const q=cm=="a"?(r[0]=="Preamble"?"Preamble to the Constitution of India":r[0]+" Constitution of India"):((r[0].match(/^\d+/)||[""])[0]+" Amendment of the Constitution of India");return "https://en.wikipedia.org/wiki/Special:Search?search="+encodeURIComponent(q)+"&go=Go"};
+function rc(){const q=$("cs").value.toLowerCase();
+ const rows=(cm=="a"?ART:AMD).map((r,i)=>[r,i]).filter(([r])=>r.join(" ").toLowerCase().includes(q));
+ $("cl").innerHTML=rows.map(([r,i])=>{const k=cm+i,o=open.has(k);
+  return `<div class="item${o?" open":""}" data-k="${k}" data-i="${i}"><button class="ih" aria-expanded="${o}"><span class="ht"><b>${esc(r[0])}</b><span>${esc(r[1])}</span></span><i class="chev">&#9656;</i></button><div class="more"${o?"":" hidden"}><p>${esc(r[2])}</p><div class="act"><a href="${wurl(r)}" target="_blank" rel="noopener">Read on Wikipedia &#8599;</a><button class="chip ai">Explain in depth (AI)</button></div><div class="ans"></div></div></div>`}).join("")||'<p class="sub">No matches.</p>'}
+$("cl").onclick=async e=>{
+ const it=e.target.closest(".item");if(!it)return;
+ const r=(cm=="a"?ART:AMD)[+it.dataset.i],k=it.dataset.k;
+ const ai=e.target.closest(".ai");
+ if(ai){const out=it.querySelector(".ans");
+  if(!sample){out.textContent="AI explanations are not available in this view.";return}
+  const subj=cm=="a"?(r[0]=="Preamble"?"the Preamble to the Constitution of India":r[0]+" of the Constitution of India"):"the "+r[0]+" Amendment of the Constitution of India";
+  ai.disabled=true;out.textContent="Thinking...";
+  try{await sample("Explain "+subj+" in the neutral, factual style of Wikipedia. Cover the background, what it provides, important court cases or later changes, and why it matters. Keep it under 180 words, say so if unsure, and do not invent details or case names.",{cache:false,onText:({text})=>{out.textContent=text}})}
+  catch(x){out.textContent="Sorry, the explanation could not be generated. Please try again."}
+  ai.disabled=false;return}
+ if(e.target.closest(".ih")){const m=it.querySelector(".more"),o=m.hidden;m.hidden=!o;it.querySelector(".ih").setAttribute("aria-expanded",o);it.classList.toggle("open",o);o?open.add(k):open.delete(k)}
+};
+$("ta").onclick=()=>{cm="a";$("ta").classList.add("on");$("tm").classList.remove("on");rc()};
+$("tm").onclick=()=>{cm="m";$("tm").classList.add("on");$("ta").classList.remove("on");rc()};
+$("cs").oninput=rc;rc();
+
+/* ---------- Box 2 ---------- */
+const ST=`Andhra Pradesh|Amaravati|162,975|Telugu|Kuchipudi dance, Telugu cuisine, Sankranti and Ugadi festivals
+Arunachal Pradesh|Itanagar|83,743|English (official); many tribal languages|Diverse tribal communities such as Adi, Apatani and Nyishi; Losar and Mopin festivals; Tawang monastery
+Assam|Dispur|78,438|Assamese|Bihu festival, Sattriya dance, tea culture, muga silk
+Bihar|Patna|94,163|Hindi|Chhath Puja, Madhubani painting, Nalanda's heritage
+Chhattisgarh|Raipur|135,192|Hindi, Chhattisgarhi|Bastar tribal art and dhokra metalwork, Pandavani, Panthi dance
+Goa|Panaji|3,702|Konkani|Portuguese-influenced architecture, Carnival, seafood cuisine, beaches
+Gujarat|Gandhinagar|196,024|Gujarati|Garba and Dandiya, Navratri, Kutch embroidery
+Haryana|Chandigarh|44,212|Hindi|Ghoomar and folk Ragini, wrestling tradition, Kurukshetra
+Himachal Pradesh|Shimla|55,673|Hindi|Pahari culture, Kullu Dussehra, Chamba rumal, apple orchards
+Jharkhand|Ranchi|79,714|Hindi|Sarhul festival, Chhau dance, Santhal art
+Karnataka|Bengaluru|191,791|Kannada|Yakshagana, Mysuru Dasara, Hampi, Carnatic and Hindustani music
+Kerala|Thiruvananthapuram|38,863|Malayalam|Kathakali, Mohiniyattam, Theyyam, Onam, backwaters
+Madhya Pradesh|Bhopal|308,252|Hindi|Khajuraho temples, Sanchi stupa, Gond art, tribal heritage
+Maharashtra|Mumbai|307,713|Marathi|Ganesh Chaturthi, Lavani, Ajanta and Ellora caves, Mumbai's film industry
+Manipur|Imphal|22,327|Meitei (Manipuri)|Manipuri classical dance, Lai Haraoba festival, sagol kangjei (polo)
+Meghalaya|Shillong|22,429|English (official); Khasi, Garo|Matrilineal society, living root bridges, Wangala festival
+Mizoram|Aizawl|21,081|Mizo, English|Cheraw bamboo dance, Chapchar Kut festival
+Nagaland|Kohima|16,579|English (official); Naga languages|Hornbill Festival, Naga tribes such as Angami and Ao, woven shawls
+Odisha|Bhubaneswar|155,707|Odia|Odissi dance, Puri Rath Yatra, Konark Sun Temple, Pattachitra painting
+Punjab|Chandigarh|50,362|Punjabi|Bhangra and Giddha, Baisakhi, Golden Temple in Amritsar, Sikh heritage
+Rajasthan|Jaipur|342,239|Hindi, Rajasthani|Forts and palaces, Ghoomar, Pushkar fair, Thar Desert
+Sikkim|Gangtok|7,096|Nepali, English, Bhutia, Lepcha|Buddhist monasteries, Losar, Kangchenjunga, organic farming
+Tamil Nadu|Chennai|130,058|Tamil|Bharatanatyam, Carnatic music, Pongal, Dravidian temple architecture
+Telangana|Hyderabad|112,077|Telugu, Urdu|Bathukamma, Bonalu, Hyderabadi cuisine, Charminar
+Tripura|Agartala|10,486|Bengali, Kokborok|Garia dance, Kharchi Puja, bamboo and cane crafts
+Uttar Pradesh|Lucknow|240,928|Hindi|Kathak, Varanasi ghats, Taj Mahal, Kumbh Mela at Prayagraj
+Uttarakhand|Dehradun (winter), Gairsain (summer)|53,483|Hindi|Char Dham pilgrimage, Kumaoni and Garhwali culture, Haridwar Ganga Aarti
+West Bengal|Kolkata|88,752|Bengali|Durga Puja, Rabindra Sangeet, literature, sweets such as rasgulla`.split("\n").map(l=>{const p=l.split("|");return{n:p[0],cap:p[1],area:p[2],lang:p[3],cul:p[4]}});
+const sel=$("ss");sel.innerHTML=ST.map((s,i)=>`<option value="${i}">${esc(s.n)}</option>`).join("");
+let si=0;
+function showState(i){si=i;const s=ST[i];
+ $("sf").innerHTML=`<dt>Capital</dt><dd>${esc(s.cap)}</dd><dt>Area</dt><dd>${esc(s.area)} km²</dd><dt>Languages</dt><dd>${esc(s.lang)}</dd><dt>Culture</dt><dd>${esc(s.cul)}</dd>`;
+ $("sw").innerHTML=`Source: <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(s.n.replace(/ /g,"_"))}" target="_blank" rel="noopener">Wikipedia: ${esc(s.n)}</a>`;}
+sel.onchange=()=>showState(+sel.value);showState(0);
+function pickState(q){q=q.toLowerCase();let b=-1,l=0;ST.forEach((s,i)=>{if(q.includes(s.n.toLowerCase())&&s.n.length>l){b=i;l=s.n.length}});return b}
+$("sb").onclick=async()=>{
+ const q=$("sq").value.trim();if(!q)return;
+ const k=pickState(q);if(k>=0){sel.value=k;showState(k)}
+ const s=ST[si],out=$("sa");
+ const quick=()=>{const l=q.toLowerCase();let r=[];
+  if(/capital/.test(l))r.push("Capital: "+s.cap);
+  if(/area|size|big|large/.test(l))r.push("Area: "+s.area+" km²");
+  if(/language|speak/.test(l))r.push("Languages: "+s.lang);
+  if(/culture|festival|dance|tradition|food|art/.test(l))r.push("Culture: "+s.cul);
+  return r.length?r.join("\n"):"Capital: "+s.cap+"\nArea: "+s.area+" km²\nLanguages: "+s.lang+"\nCulture: "+s.cul}
+ if(!sample){out.textContent=quick();return}
+ $("sb").disabled=true;out.textContent="Thinking...";
+ try{await sample(`You answer questions about Indian states in the neutral, factual style of Wikipedia. Selected state: ${s.n}. Facts on file: capital ${s.cap}; area ${s.area} km2; languages ${s.lang}; culture ${s.cul}. If the question names a different state, answer about that one. Keep the answer under 150 words, say so when unsure, and do not invent figures.\n\nQuestion: ${q}`,{cache:false,onText:({text})=>{out.textContent=text}})}
+ catch(e){out.textContent=quick()+"\n\n(AI answers are unavailable right now, so this is the built-in summary.)"}
+ $("sb").disabled=false};
+$("sq").onkeydown=e=>{if(e.key==="Enter")$("sb").click()};
+
+/* ---------- Box 3 ---------- */
+const QZ={
+Parliament:[["How many elected seats does the Lok Sabha currently have?",["543","545","552","250"],0,"Article 81 allows a maximum of 550 members, and the Lok Sabha currently has 543 elected seats. The allocation of seats among states has been frozen on the basis of the 1971 census."],["Who is the ex officio chairman of the Rajya Sabha?",["Prime Minister","Speaker","Vice-President","President"],2,"Article 89 makes the Vice-President the ex officio Chairman of the Rajya Sabha. The Speaker presides over the Lok Sabha instead."],["What is the minimum age to contest a Lok Sabha election?",["21","25","30","35"],1,"Article 84 sets the minimum age at 25 for the Lok Sabha and 30 for the Rajya Sabha."]],
+Executive:[["Who appoints the Prime Minister of India?",["Chief Justice","Speaker","President","Election Commission"],2,"Article 75 says the Prime Minister is appointed by the President, who normally invites the leader of the majority party or coalition in the Lok Sabha."],["Which article provides for a Council of Ministers to aid and advise the President?",["Article 52","Article 74","Article 79","Article 124"],1,"Article 74 deals with the Council of Ministers. Article 52 creates the office of President, Article 79 sets up Parliament and Article 124 the Supreme Court."],["The Council of Ministers is collectively responsible to which body?",["Rajya Sabha","Lok Sabha","Supreme Court","President"],1,"Article 75(3) makes the Council of Ministers collectively responsible to the Lok Sabha, so the government must resign if it loses the confidence of that House."]],
+Judiciary:[["Which article establishes the Supreme Court of India?",["Article 32","Article 124","Article 226","Article 368"],1,"Article 124 establishes and constitutes the Supreme Court. Article 32 is the right to approach it, Article 226 concerns High Courts and Article 368 concerns amendments."],["What is the retirement age of Supreme Court judges?",["60","62","65","70"],2,"Supreme Court judges retire at 65, while High Court judges retire at 62."],["Which article empowers High Courts to issue writs?",["Article 32","Article 136","Article 226","Article 300A"],2,"Article 226 empowers High Courts to issue writs. Article 32 is for the Supreme Court, Article 136 gives special leave to appeal and Article 300A concerns property."]],
+Elections:[["Which body conducts elections to Parliament and state legislatures?",["Finance Commission","Election Commission of India","Supreme Court","NITI Aayog"],1,"Article 324 gives the Election Commission of India the superintendence, direction and control of elections. The Finance Commission handles revenue sharing and NITI Aayog is a policy think tank."],["Which amendment lowered the voting age to 18?",["42nd","44th","52nd","61st"],3,"The 61st Amendment (passed 1988, in force 1989) lowered the voting age from 21 to 18. The 42nd was a large revision, the 44th added Emergency safeguards and the 52nd introduced the anti-defection law."],["Which article provides for the Election Commission?",["Article 280","Article 324","Article 352","Article 356"],1,"Article 324 provides for the Election Commission. Article 280 is the Finance Commission, Article 352 is National Emergency and Article 356 is President's Rule."]]};
+let qc="All",deck=[],cur=null,cycled=false,noAI=false,busy=false;
+const seenQ=new Set();
+$("qt").innerHTML=["All",...Object.keys(QZ)].map(k=>`<button class="tab${k==qc?" on":""}" data-k="${k}">${k}</button>`).join("");
+$("qt").onclick=e=>{const k=e.target.dataset.k;if(!k||busy)return;qc=k;deck=[];cur=null;cycled=false;[...$("qt").children].forEach(b=>b.classList.toggle("on",b.dataset.k==k));nextQ()};
+const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pool=()=>(qc=="All"?Object.keys(QZ):[qc]).flatMap(c=>QZ[c].map(q=>({c,q})));
+const TOPIC={Parliament:"the Indian Parliament (Lok Sabha, Rajya Sabha, presiding officers, procedures, committees, bills)",Executive:"the Indian executive (President, Vice-President, Prime Minister, Council of Ministers, Governors, ordinances, emergency provisions)",Judiciary:"the Indian judiciary (Supreme Court, High Courts, writs, judicial review, landmark cases, appointments)",Elections:"Indian elections (Election Commission, the electoral process, representation laws, voting age, anti-defection law, reforms)"};
+async function more(){
+ const cats=Object.keys(QZ),c=qc=="All"?cats[Math.floor(Math.random()*cats.length)]:qc;
+ const known=QZ[c].map(x=>x[0]).slice(-25).join(" | ");
+ const r=await sample.json("Write 5 new multiple-choice quiz questions about "+TOPIC[c]+". Base them on well-established facts that appear in Wikipedia, avoid anything that changes often or is disputed, and make each one different from these existing questions: "+known+". Return only a JSON array of 5 objects with the keys q (string), options (array of exactly 4 strings), answer (index 0 to 3 of the correct option) and explanation (1 to 2 sentences saying why the answer is correct).",{cache:false});
+ const ok=(Array.isArray(r)?r:[]).filter(x=>x&&typeof x.q=="string"&&Array.isArray(x.options)&&x.options.length==4&&x.options.every(o=>typeof o=="string")&&Number.isInteger(x.answer)&&x.answer>=0&&x.answer<4&&typeof x.explanation=="string"&&!seenQ.has(x.q));
+ return ok.map(x=>{const q=[x.q,x.options,x.answer,x.explanation,true];QZ[c].push(q);return{c,q}});
+}
+async function refill(){
+ let fresh=[];
+ if(cycled&&sample&&!noAI){
+  $("qz").innerHTML='<p class="sub">Preparing fresh questions...</p>';
+  try{fresh=await more()}catch(e){if(e&&e.code=="not_granted")noAI=true}
+ }
+ cycled=true;
+ deck=fresh.length?shuf(fresh):shuf(pool());
+ if(cur&&deck.length>1&&deck[deck.length-1].q[0]===cur.q[0]){deck.unshift(deck.pop())}
+}
+async function nextQ(){
+ if(busy)return;busy=true;
+ if(!deck.length)await refill();
+ cur=deck.pop();seenQ.add(cur.q[0]);busy=false;rq();
+}
+function rq(){
+ const {c,q}=cur,z=$("qz");
+ z.innerHTML=`<p class="qcat">${esc(c)}${q[4]?" &middot; AI-generated":""}</p><p><b>${esc(q[0])}</b></p>`+q[1].map((o,i)=>`<button class="opt" data-i="${i}">${esc(o)}</button>`).join("")+'<div id="qn"></div>';
+ z.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+  const i=+b.dataset.i;
+  z.querySelectorAll(".opt").forEach((x,j)=>{x.disabled=true;if(j==q[2])x.classList.add("ok");else if(j==i)x.classList.add("bad")});
+  $("qn").innerHTML=(i==q[2]?'<div class="fb good"><b>Correct.</b> '+esc(q[3])+'</div>':'<div class="fb wrong"><b>Not quite.</b> The correct answer is <b>'+esc(q[1][q[2]])+'</b>.<br>'+esc(q[3])+'</div>')+'<button class="btn" id="qx" style="margin-top:10px">Next question</button>';
+  $("qn").scrollIntoView({behavior:"smooth",block:"nearest"});
+  $("qx").onclick=nextQ})}
+nextQ();
+
+/* ---------- Box 4 ---------- */
+const hist=[];
+const INSTR="You explain international relations and public policy in the neutral, encyclopedic style of Wikipedia. Present multiple perspectives on contested issues, separate facts from interpretation, avoid personal political opinions, and say clearly when you are unsure or when events may have changed after your training. Keep answers under 200 words.";
+const CH=["What is the Indus Waters Treaty?","How does the Quad work?","Explain India's non-alignment policy","What is BRICS?"];
+$("ac").innerHTML=CH.map(c=>`<button class="chip">${esc(c)}</button>`).join("");
+$("ac").onclick=e=>{if(e.target.className=="chip"){$("ai").value=e.target.textContent;$("ab").click()}};
+function add(c,t){const d=document.createElement("div");d.className="msg "+c;d.textContent=t;$("am").appendChild(d);$("am").scrollTop=1e9;return d}
+$("ab").onclick=async()=>{
+ const q=$("ai").value.trim();if(!q)return;$("ai").value="";
+ add("me",q);
+ if(!sample){add("ai","AI answers are not available in this view. Open the page from your claude.ai library to use this box.");return}
+ hist.push({role:"user",content:q});
+ const msgs=hist.map(m=>({...m}));msgs[msgs.length-1].content=INSTR+"\n\nQuestion: "+q;
+ const d=add("ai","Thinking...");$("ab").disabled=true;
+ try{const r=await sample(msgs,{cache:false,onText:({text})=>{d.textContent=text;$("am").scrollTop=1e9}});hist.push({role:"assistant",content:r.text||d.textContent})}
+ catch(e){hist.pop();d.textContent=e&&e.code=="not_granted"?"Permission to use AI was not granted.":e&&e.code=="rate_limited"?"Too many requests. Please wait a moment.":"Sorry, that request failed. Please try again."}
+ $("ab").disabled=false};
+$("ai").onkeydown=e=>{if(e.key==="Enter")$("ab").click()};
+
+const CARDS=[...document.querySelectorAll(".card")],PAN=[0,1,2,3].map(i=>$("p"+i));
+function openP(i){
+ const same=!PAN[i].hidden;
+ PAN.forEach(p=>p.hidden=true);CARDS.forEach(c=>{c.setAttribute("aria-pressed","false");c.querySelector(".go").textContent="Explore \u2192"});
+ if(same){$("hint").hidden=false;return}
+ PAN[i].hidden=false;CARDS[i].setAttribute("aria-pressed","true");CARDS[i].querySelector(".go").textContent="Close \u00d7";$("hint").hidden=true;
+ PAN[i].scrollIntoView({behavior:"smooth",block:"start"});
+}
+CARDS.forEach((c,i)=>c.onclick=()=>openP(i));
+</script></body></html>
